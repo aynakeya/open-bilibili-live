@@ -53,9 +53,10 @@ func (d *CmdData) ToLike() LikeData {
 }
 
 type UserInfo struct {
-	UID   int    `json:"uid"`   // 用户uid
-	UName string `json:"uname"` // 用户昵称
-	UFace string `json:"uface"` // 用户头像
+	UID    int    `json:"uid"`     // 用户uid
+	OpenID string `json:"open_id"` // 用户唯一标识
+	UName  string `json:"uname"`   // 用户昵称
+	UFace  string `json:"uface"`   // 用户头像
 }
 
 type MedalInfo struct {
@@ -67,6 +68,7 @@ type MedalInfo struct {
 type DanmakuData struct {
 	RoomID    int    `json:"room_id"` // 弹幕接收的直播间
 	UID       int    `json:"uid"`     // 用户UID
+	OpenID    string `json:"open_id"` // 用户唯一标识
 	UName     string `json:"uname"`   // 用户昵称
 	Msg       string `json:"msg"`     // 弹幕内容
 	MsgID     string `json:"msg_id"`  // 消息唯一id
@@ -84,6 +86,7 @@ type DanmakuData struct {
 type GiftData struct {
 	RoomID   int    `json:"room_id"`   // 直播间 (In auditorium mode, it represents the auditorium live room; otherwise, it represents the gifting live room)
 	UID      int    `json:"uid"`       // 送礼用户 UID
+	OpenID   string `json:"open_id"`   // 用户唯一标识
 	UName    string `json:"uname"`     // 送礼用户昵称
 	UFace    string `json:"uface"`     // 送礼用户头像
 	GiftID   int    `json:"gift_id"`   // 道具 ID (For blind boxes: the ID of the item obtained)
@@ -112,6 +115,7 @@ type GiftData struct {
 type SuperChatData struct {
 	RoomID     int    `json:"room_id"`     // 直播间 ID
 	UID        int    `json:"uid"`         // 购买用户 UID
+	OpenID     string `json:"open_id"`     // 用户唯一标识
 	UName      string `json:"uname"`       // 购买的用户昵称
 	UFace      string `json:"uface"`       // 购买用户头像
 	MessageID  int    `json:"message_id"`  // 留言 ID (In case of risk control, this may be used to recall the message)
