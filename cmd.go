@@ -1,6 +1,8 @@
 package openblive
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 const (
 	CmdDanmu        string = "LIVE_OPEN_PLATFORM_DM"

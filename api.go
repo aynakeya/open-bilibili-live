@@ -55,7 +55,7 @@ func (h *apiHeader) ToHeaderStr() string {
 type IApiClient interface {
 	AppStart(code string, appId int64) (*AppStartResult, *PublicError)
 	AppEnd(appId int64, gameId string) *PublicError
-	HearBeat(gameId string) error
+	HearBeat(gameId string) *PublicError
 }
 
 type ApiClient struct {
@@ -145,7 +145,7 @@ func (c *ApiClient) AppEnd(appId int64, gameId string) *PublicError {
 	return pe
 }
 
-func (c *ApiClient) HearBeat(gameId string) error {
+func (c *ApiClient) HearBeat(gameId string) *PublicError {
 	resp, err := c.post(UrlAppHeartBeat, map[string]interface{}{
 		"game_id": gameId,
 	})
