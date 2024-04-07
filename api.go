@@ -52,6 +52,12 @@ func (h *apiHeader) ToHeaderStr() string {
 	return headerStr[:len(headerStr)-1]
 }
 
+type IApiClient interface {
+	AppStart(code string, appId int64) (*AppStartResult, *PublicError)
+	AppEnd(appId int64, gameId string) *PublicError
+	HearBeat(gameId string) error
+}
+
 type ApiClient struct {
 	client       *resty.Client
 	accessKey    string

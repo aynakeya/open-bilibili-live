@@ -20,7 +20,7 @@ func (app *BLiveApp) CreateClient(code string) *BLiveClient {
 }
 
 type BLiveClient struct {
-	apiclient *ApiClient
+	apiclient IApiClient
 	AppID     int64
 	Code      string // 主播身份码
 
@@ -31,6 +31,15 @@ type BLiveClient struct {
 	running bool
 
 	longConn BLiveLongConnection
+}
+
+func NewBliveClient(appID int64, code string, client IApiClient) *BLiveClient {
+	return &BLiveClient{
+		AppID:            appID,
+		Code:             code,
+		apiclient:        client,
+		HearbeatInterval: 20 * time.Second,
+	}
 }
 
 func (c *BLiveClient) Status() bool {
