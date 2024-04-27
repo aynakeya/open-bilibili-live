@@ -76,6 +76,7 @@ func (c *BLiveClient) End() error {
 	e := c.apiclient.AppEnd(c.AppID, c.AppInfo.GameInfo.GameID)
 	c.AppInfo = nil
 	c.running = false
+	c.longConn = nil
 	// public error to error
 	if e == nil {
 		return nil
