@@ -153,7 +153,9 @@ func (c *openBLiveLongConn) CloseConnection() error {
 	}
 	if c.wsConn != nil {
 		_ = c.wsConn.Close()
-		c.wsConn = nil
+		// dont reset wsConn, otherwise, it might trigger race condition when sending heartbeat
+		// keep wsConn for sending heartbeat. if failed it will trigger an error instead of panic
+		//c.wsConn = nil
 	}
 	c.status = false
 	return nil
